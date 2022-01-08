@@ -1,6 +1,4 @@
-import Button from "@mui/material/Button";
 import { MainWrapper } from "./index.style";
-import Navbar from "../components/Navbar";
 import MainLayout from "../layouts/MainLayout";
 
 const Index = () => {

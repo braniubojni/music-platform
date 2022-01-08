@@ -17,7 +17,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import AlbumIcon from "@mui/icons-material/Album";
 import { useRouter } from "next/router";
-
+import { APP_BAR_COLOR } from "../constants/colors";
+import { ALBUMS_ROUTE, HOME_ROUTE, TRACKS_ROUTE } from "../constants/routes";
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
@@ -74,9 +75,9 @@ export default function Navbar() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const menuItems = [
-    { name: "Home", icon: HomeIcon, href: "/" },
-    { name: "Tracks", icon: AudiotrackIcon, href: "/tracks" },
-    { name: "Albums", icon: AlbumIcon, href: "/albums" },
+    { name: "Home", icon: HomeIcon, href: HOME_ROUTE },
+    { name: "Tracks", icon: AudiotrackIcon, href: TRACKS_ROUTE },
+    { name: "Albums", icon: AlbumIcon, href: ALBUMS_ROUTE },
   ];
 
   const handleDrawerOpen = () => {
@@ -90,7 +91,8 @@ export default function Navbar() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+
+      <AppBar sx={{ bgcolor: APP_BAR_COLOR }} position="fixed" open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -118,6 +120,7 @@ export default function Navbar() {
         variant="persistent"
         anchor="left"
         open={open}
+        onClose={handleDrawerClose}
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>

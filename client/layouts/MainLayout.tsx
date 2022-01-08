@@ -1,4 +1,4 @@
-import { Toolbar } from "@mui/material";
+import { Container, Toolbar } from "@mui/material";
 import React from "react";
 import Navbar from "../components/Navbar";
 
@@ -7,7 +7,7 @@ const MainLayout: React.FC = ({ children }) => {
     <>
       <Navbar />
       <Toolbar />
-      {children}
+      <Container>{children}</Container>
     </>
   );
 };
