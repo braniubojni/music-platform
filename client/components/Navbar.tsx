@@ -17,7 +17,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import AlbumIcon from "@mui/icons-material/Album";
 import { useRouter } from "next/router";
-import { APP_BAR_COLOR } from "../constants/colors";
+import { BAR_BLACK_COLOR } from "../constants/colors";
 import { ALBUMS_ROUTE, HOME_ROUTE, TRACKS_ROUTE } from "../constants/routes";
 const drawerWidth = 240;
 
@@ -92,7 +92,7 @@ export default function Navbar() {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
 
-      <AppBar sx={{ bgcolor: APP_BAR_COLOR }} position="fixed" open={open}>
+      <AppBar sx={{ bgcolor: BAR_BLACK_COLOR }} position="fixed" open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
