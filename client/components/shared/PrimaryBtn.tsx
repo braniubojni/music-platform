@@ -8,26 +8,35 @@ import {
 } from "../../constants/colors";
 
 interface PrimaryBtnProps {
-  route: string;
-  children: React.ReactNode;
+  route?: string | undefined;
   sx?: any;
+  variant?: "text" | "contained" | "outlined" | undefined;
 }
 
-const PrimaryBtn: FC<PrimaryBtnProps> = ({ route, children, sx }) => {
+const PrimaryBtn: FC<PrimaryBtnProps> = ({
+  route,
+  children,
+  sx,
+  variant = "contained",
+}) => {
   const router = useRouter();
+  const changeRoute = (e: any, route?: string) => {
+    if (route) return router.push(route);
+    return e.preventDefault();
+  };
   return (
     <Button
-      variant="contained"
+      variant={variant}
       sx={{
-        background: PRIMARY_COLOR,
-        color: BAR_BLACK_COLOR,
+        background: variant === "contained" ? PRIMARY_COLOR : "text",
+        color: variant === "contained" ? BAR_BLACK_COLOR : "text",
         fontWeight: 600,
         "&:hover": {
           background: PRIMARY_COLOR_HOVER,
         },
         ...sx,
       }}
-      onClick={() => router.push(route)}
+      onClick={(e) => changeRoute(e, route)}
     >
       {children}
     </Button>

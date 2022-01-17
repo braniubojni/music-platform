@@ -2,7 +2,8 @@ import { Box, styled } from "@mui/system";
 
 export const Wrapper = styled(Box)(({ theme }) => ({
   display: "flex",
-  justifyContent: "space-between",
+  alignItems: "center",
+  marginTop: theme.spacing(2),
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
   },

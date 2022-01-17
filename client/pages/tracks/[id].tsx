@@ -22,27 +22,26 @@ const TrackPage: FC = () => {
       <PrimaryBtn sx={{ mt: 1.5, pb: 1.5 }} route={TRACKS_ROUTE}>
         To the list
       </PrimaryBtn>
-
-      <Grid
-        sx={{ mt: 1.5 }}
-        sm="auto"
-        textAlign="left"
-        justifyContent="center"
-        container
-      >
-        <Wrapper>
-          <Box
-            component="img"
-            src={track.picture}
-            sx={{ width: 200, height: 200, mr: 2 }}
-          />
-          <Box component="div">
-            <Box component="h2">Track name - {track.name}</Box>
-            <Box component="h2">Artist - {track.artist}</Box>
-            <Box component="h2">Listened - {track.listens}</Box>
-          </Box>
-        </Wrapper>
-      </Grid>
+      <Wrapper>
+        <Box
+          component="img"
+          src={track.picture}
+          sx={{
+            width: 200,
+            height: 200,
+            mr: 2,
+            borderRadius: 2,
+            sm: {
+              margin: "0 auto",
+            },
+          }}
+        />
+        <Box component="div">
+          <Box component="h2">Track name - {track.name}</Box>
+          <Box component="h2">Artist - {track.artist}</Box>
+          <Box component="h2">Listened - {track.listens}</Box>
+        </Box>
+      </Wrapper>
       <Box component="h1">Words to track</Box>
       <Typography mb={1.5}>{track.text}</Typography>
       <Grid container>
@@ -61,12 +60,13 @@ const TrackPage: FC = () => {
           // value={}
           // onChange={}
         />
+        <PrimaryBtn variant={"outlined"}>Send</PrimaryBtn>
       </Grid>
       <Box>
         {track.comments.map((comment, i) => (
           <Box key={uuidv4()}>
             <Box>Author - {comment.username}</Box>
-            <Typography>{comment.text}</Typography>
+            <Typography>Commentary - {comment.text}</Typography>
           </Box>
         ))}
       </Box>
