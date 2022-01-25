@@ -66,7 +66,7 @@ const TrackPage: FC = () => {
         {track.comments.map((comment, i) => (
           <Box key={uuidv4()}>
             <Box>Author - {comment.username}</Box>
-            <Typography>Commentary - {comment.text}</Typography>
+            <Typography>Comments - {comment.text}</Typography>
           </Box>
         ))}
       </Box>

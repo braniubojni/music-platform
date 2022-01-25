@@ -2,23 +2,29 @@ import MainLayout from "../../layouts/MainLayout";
 import StepWrapper from "../../components/StepWrapper";
 import { Box } from "@mui/system";
 import { Button, Grid } from "@mui/material";
-import {
-  BAR_BLACK_COLOR,
-  PRIMARY_COLOR,
-  PRIMARY_COLOR_HOVER,
-} from "../../constants/colors";
+import { BAR_BLACK_COLOR, PRIMARY_COLOR_HOVER } from "../../constants/colors";
 import { useState } from "react";
-import SecondaryBtn from "../../components/shared/SecondaryBtn";
+import FirstStep from "../../components/steps/FirstStep";
+import FileUpload from "../../components/steps/FileUpload";
 
 const Create = () => {
   const [activeStep, setActiveStep] = useState(0);
   const next = () => setActiveStep((prev) => prev - 1);
   const back = () => setActiveStep((prev) => prev + 1);
+
   return (
     <MainLayout>
       <StepWrapper activeStep={activeStep}>
-        <Box sx={{ pl: "3%" }} component="h1">
-          Track upload
+        <Box sx={{ px: "2%" }} component="h1">
+          <>
+            {activeStep === 0 ? (
+              <FirstStep />
+            ) : activeStep === 1 ? (
+              <FileUpload />
+            ) : (
+              <h1>Hello</h1>
+            )}
+          </>
         </Box>
       </StepWrapper>
       <Grid container justifyContent="space-between" sx={{ mt: "2%" }}>

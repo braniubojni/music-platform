@@ -1,13 +1,13 @@
 import { Grid, TextField } from "@mui/material";
+import FirstStep from "./steps/FirstStep";
 
 const Step = (index: number) => {
+  console.log(index);
   return (
     <Grid container direction={"column"} sx={{ padding: 20 }}>
       {index === 1 ? (
         <>
-          <TextField sx={{ mt: 2 }} label="Track name" />
-          <TextField sx={{ mt: 2 }} label="Artist name" />
-          <TextField sx={{ mt: 2 }} label="Track text" rows={3} multiline />
+          <FirstStep />
         </>
       ) : index === 1 ? (
         <></>
