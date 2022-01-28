@@ -9,6 +9,8 @@ import FileUpload from "../../components/steps/FileUpload";
 
 const Create = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [picture, setPicture] = useState(null);
+  const [audio, setAudio] = useState(null);
   const next = () => setActiveStep((prev) => prev - 1);
   const back = () => setActiveStep((prev) => prev + 1);
 
@@ -20,9 +22,13 @@ const Create = () => {
             {activeStep === 0 ? (
               <FirstStep />
             ) : activeStep === 1 ? (
-              <FileUpload />
+              <FileUpload setFile={setPicture} accept="image/*">
+                <Button variant="outlined">Upload the image</Button>
+              </FileUpload>
             ) : (
-              <h1>Hello</h1>
+              <FileUpload setFile={setAudio} accept="audio/*">
+                <Button variant="outlined">Upload the audio</Button>
+              </FileUpload>
             )}
           </>
         </Box>

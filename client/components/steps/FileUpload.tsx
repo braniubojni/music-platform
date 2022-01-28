@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Box, Input } from "@mui/material";
 
 interface FileUploadProps {
-  file: any;
   setFile: Function;
+  accept: string;
 }
 
-const FileUpload: React.FC<FileUploadProps> = ({ file, setFile }) => {
+const FileUpload: React.FC<FileUploadProps> = ({
+  setFile,
+  accept,
+  children,
+}) => {
+  const ref = useRef<HTMLInputElement>(null);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.hasOwnProperty("files") && e.target.files !== null) {
+      setFile(e.target.files[0]);
+    }
+  };
+
   return (
-    <Box sx={{ width: "46%" }}>
-      <Input type="file" />
+    <Box onClick={() => ref.current?.click()} sx={{ width: "46%" }}>
+      <input
+        type="file"
+        accept={accept}
+        onChange={onChange}
+        style={{ display: "none" }}
+        ref={ref}
+      />
+      {children}
     </Box>
   );
 };
